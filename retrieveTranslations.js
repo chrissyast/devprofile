@@ -1,6 +1,11 @@
 export default async function loadTranslations() {
-
-  const translations = require(
-  `./translations/index.json`)
-  return translations.results
+  let translations = null
+  if (process.env.NODE_ENV === 'development') {
+    try {
+        translations = require('./translations/index.json')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  return translations
 }
