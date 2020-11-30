@@ -1,6 +1,6 @@
 export default async function loadTranslations() {
 
-  const translations = await import(
+  const translations = require(
   `./translations/index.json`)
   return translations.results
 }
