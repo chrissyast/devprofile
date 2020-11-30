@@ -1,13 +1,6 @@
 <template>
   <div class="container">
     <div>
-      <select @change="changeLanguage($event)">
-        <option v-for="{code, name} in languages"
-        :value="code"
-        :selected="selectedLanguage===code">
-            {{name}}
-        </option>
-      </select>
       <h1 class="title">
         {{ welcomeText }}
       </h1>
@@ -67,24 +60,21 @@ export default {
   },
   computed: {
     welcomeText() {
-      const selectedLanguageContent =  this.langMap.find(f => f.lang === this.selectedLanguage)
+      const selectedLanguageContent =  this.langMap.find(f => f.lang === this.storeLanguage)
       const text = this.$prismic.asText(selectedLanguageContent.data.welcome)
       return text
     },
     intro() {
-      const selectedLanguageContent =  this.langMap.find(f => f.lang === this.selectedLanguage)
+      const selectedLanguageContent =  this.langMap.find(f => f.lang === this.storeLanguage)
       const text = this.$prismic.asText(selectedLanguageContent.data.introduction_text)
       return text
+    },
+    storeLanguage() {
+      return this.$store.state.selectedLanguage
     }
-  },
-  mounted() {
-    this.isMounted = true;
   },
 
   methods: {
-    changeLanguage(event) {
-      this.selectedLanguage = event.target.value
-    },
 
   }
 }
@@ -113,7 +103,7 @@ export default {
     sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 10vw;
   color: #35495e;
   letter-spacing: 1px;
 }

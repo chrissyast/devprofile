@@ -7,5 +7,7 @@ export default async function loadTranslations() {
       console.log(error)
     }
   }
-  return translations
+  if (translations) {
+    return translations.results
+  }
 }
