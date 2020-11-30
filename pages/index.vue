@@ -1,50 +1,52 @@
 <template>
   <div class="container">
     <div>
-      <select @change="foo($event)" name="language-picker-select" id="language-picker-select">
-        <option value="en-gb" selected>English</option>
-        <option value="es-es">Español</option>
-        <option value="zh-cn">简体中文</option>
-        <!-- other language options -->
+      <select @change="changeLanguage($event)">
+        <option v-for="{code, name} in languages"
+        :value="code"
+        :selected="selectedLanguage===code">
+            {{name}}
+        </option>
       </select>
       <h1 class="title">
-        {{ introText }}
+        {{ welcomeText }}
       </h1>
-
+      <p>
+        {{ intro }}
+      </p>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
 
 import axios from 'axios'
+import loadTranslations from '../retrieveTranslations.js'
 
 export default {
   async asyncData(context) {
-      const {error, $prismic} = context
-      let introductionContent = {}
-      try {
-        // Query to get introduction page content
-        /*
-        const foo = await axios.get('https://jsonplaceholder.typicode.com/posts')
-        console.log(foo.data)
-        return {introductionContent: foo.data}
-        */
-        let fooBar = await $prismic.api.query(
-          $prismic.predicates.at('document.type', 'introduction'),
-          {lang: '*'})
-        fooBar = fooBar.results
-        const langMap = fooBar.map((f) => {return {"lang": f.lang, "data": f.data}})
-       /* fooBar = fooBar.map(r => {
-          fooBar["foo"] = r.data;
-        }) */
-        return {langMap}
-      } catch (e) {
-        // Returns error page
-        console.log(e)
-        error({statusCode: 404, message: 'Page not found'})
+    let selectedLanguage = "en-gb"
+    if (process.server) {
+      const { req, res, beforeNuxtRender } = context
+      const host = req.headers.host;
+      if (host === "inglesconchris.me:3000") {
+        selectedLanguage = "es-es"
       }
+    }
+    const {error, $prismic} = context
+        let introductionContent = {}
+        try {
+          let prismicResponse = await $prismic.api.query(
+          $prismic.predicates.at('document.type', 'introduction'),
+              {lang: '*'})
+          content = prismicResponse.results
+          const langMap = content.map((f) => {return {"lang": f.lang, "data": f.data}})
+          return {langMap, selectedLanguage}
+          } catch (e) {
+            // Returns error page
+            console.log(e)
+            error({statusCode: 404, message: 'Page not found'})
+          }
 
   },
   beforeCreate() {
@@ -52,19 +54,21 @@ export default {
   },
   data() {
     return {
-      //introductionContent: [],
-      selectedLanguage: "en-gb",
-      dataReady: false
+        languages: [{code:"en-gb",name:"English"},{code:"es-es",name:"Español"},{code:"zh-cn",name:"简体中文"}]
     }
   },
   created(context) {
 
   },
   computed: {
-    introText() {
-      debugger;
+    welcomeText() {
       const selectedLanguageContent =  this.langMap.find(f => f.lang === this.selectedLanguage)
       const text = this.$prismic.asText(selectedLanguageContent.data.welcome)
+      return text
+    },
+    intro() {
+      const selectedLanguageContent =  this.langMap.find(f => f.lang === this.selectedLanguage)
+      const text = this.$prismic.asText(selectedLanguageContent.data.introduction_text)
       return text
     }
   },
@@ -73,7 +77,7 @@ export default {
   },
 
   methods: {
-    foo(event) {
+    changeLanguage(event) {
       this.selectedLanguage = event.target.value
     },
 
