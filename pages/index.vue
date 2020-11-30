@@ -33,6 +33,11 @@ export default {
         selectedLanguage = "es-es"
       }
     }
+    if (context.isDev) {
+      let translations = await loadTranslations()
+      const langMap = translations.map((f) => {return {"lang": f.lang, "data": f.data}})
+      return {langMap, selectedLanguage}
+    } else {
     const {error, $prismic} = context
         let introductionContent = {}
         try {
@@ -47,7 +52,7 @@ export default {
             console.log(e)
             error({statusCode: 404, message: 'Page not found'})
           }
-
+    }
   },
   beforeCreate() {
     //debugger;
