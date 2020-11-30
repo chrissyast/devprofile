@@ -44,7 +44,7 @@ export default {
           let prismicResponse = await $prismic.api.query(
           $prismic.predicates.at('document.type', 'introduction'),
               {lang: '*'})
-          content = prismicResponse.results
+          const content = prismicResponse.results
           const langMap = content.map((f) => {return {"lang": f.lang, "data": f.data}})
           return {langMap, selectedLanguage}
           } catch (e) {
