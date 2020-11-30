@@ -29,7 +29,7 @@ export default {
     if (process.server) {
       const { req, res, beforeNuxtRender } = context
       const host = req.headers.host;
-      if (host === "inglesconchris.me:3000") {
+      if (host === "inglesconchris.me:3000" || host === "inglesconchris.me") {  // TODO clean this up
         selectedLanguage = "es-es"
       }
     }
