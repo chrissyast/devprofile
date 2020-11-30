@@ -6,6 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "dev_start": "node --inspect node_modules/.bin/nuxt",
     "generate": "nuxt generate"
   },
   "dependencies": {
