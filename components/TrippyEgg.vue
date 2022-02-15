@@ -45,7 +45,7 @@ export default {
 html {background-color: black}
 
 .background {
-    opacity: 20%;
+    opacity: 0.25;
     width: 100%;
     height: 100%;
     position: fixed;
