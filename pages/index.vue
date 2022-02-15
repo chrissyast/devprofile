@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="main-content container">
     <div>
       <h1 class="title">
         {{ welcomeText }}
       </h1>
-      <p>
+      <p class="subtitle">
         {{ intro }}
       </p>
     </div>
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -90,7 +90,7 @@ export default {
   text-align: center;
 }
 
-.title {
+.title, .subtitle {
   font-family:
     'Quicksand',
     'Source Sans Pro',
@@ -101,17 +101,20 @@ export default {
     'Helvetica Neue',
     Arial,
     sans-serif;
+    // color: #35495e;
+    color: #49c79e;
+}
+
+.title {
   display: block;
   font-weight: 300;
   font-size: 10vw;
-  color: #35495e;
   letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 300;
   font-size: 42px;
-  color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
 }

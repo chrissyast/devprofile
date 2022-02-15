@@ -3,7 +3,7 @@
 
     var Prismic = require('prismic-javascript');
 
-Prismic.getApi("https://teaching.cdn.prismic.io/api/v2").then(function(api) {  return api.query(
+Prismic.getApi("https://dev-profile.prismic.io/api/v2").then(function(api) {  return api.query(
     Prismic.Predicates.at('document.type', 'introduction'),
     {lang: '*'}
   );

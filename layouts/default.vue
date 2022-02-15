@@ -1,11 +1,12 @@
 <template>
   <div>
     <Header/>
+    <TrippyEgg />
     <Nuxt />
   </div>
 </template>
 
-<style>
+<style lang="scss">
 html {
   font-family:
     'Source Sans Pro',

@@ -27,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+  div {
+    position: fixed
+  }
 </style>
