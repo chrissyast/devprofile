@@ -1,13 +1,12 @@
 <template>
-<div>
   <select @change="changeLanguage($event)">
     <option v-for="{code, name} in languages"
+            :key="code"
             :value="code"
             :selected="selectedLanguage===code">
       {{name}}
     </option>
   </select>
-</div>
 </template>
 
 <script>
@@ -23,11 +22,17 @@ export default {
       languages: [{code:"en-gb",name:"English"},{code:"es-es",name:"Español"},{code:"zh-cn",name:"简体中文"}]
     }
   },
+  computed: {
+    selectedLanguage() {
+      return this.$store.getters["selectedLanguage"];
+    }
+  }
 }
 </script>
 
-<style scoped>
-  div {
-    position: fixed
+<style scoped lang="scss">
+  select {
+    position: fixed;
+    z-index: 1;
   }
 </style>
