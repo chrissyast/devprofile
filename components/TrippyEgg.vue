@@ -33,35 +33,30 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-html {background-color: black}
-
-.background {
-    opacity: 0.25;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
+$slice-size-mob: 36vh;
+$slice-size-normal: 60vh;
 
 .egg-container {
     position: relative;
-    left: calc(50% - 30vh);
-    top: calc(50% - 30vh);
+    left: calc(50% - ($slice-size-normal / 2));
+    top: calc(50% - ($slice-size-normal / 2));
+    @media (max-width: 580px) {
+      left: calc(50% - ($slice-size-mob / 2));
+      top: calc(50% - ($slice-size-mob / 2));
+    }
 }
 
 
 .slice {
   position: absolute;
-  height: 60vh;
-  width: 60vh;
+  height: $slice-size-normal;
+  width: $slice-size-normal;
+
+  @media (max-width: 580px) {
+    height: $slice-size-mob;
+    width: $slice-size-mob;
+  }
 
  // border-radius: 40% 60% 10% 90% / 40% 90% 10% 60%;
  // egg
