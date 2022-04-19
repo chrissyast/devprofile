@@ -12,7 +12,7 @@
 </template>
 
 <script>
-
+// FOO
 import axios from 'axios'
 import loadTranslations from '../retrieveTranslations.js'
 
