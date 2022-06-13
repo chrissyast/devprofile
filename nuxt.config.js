@@ -9,13 +9,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {src: "https://kit.fontawesome.com/7b0426133b.js", crossorigin: "anonymous"}
     ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    "@/styles/app.scss"
-  ],
+
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -28,7 +29,16 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+   '@nuxtjs/vuetify',
   ],
+
+  css: [
+    "@/styles/app.scss"
+  ],
+
+  fontawesome: {
+    icons: { solid: true }
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -50,7 +60,10 @@ export default {
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    proxy: true
+  },
+
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
@@ -64,6 +77,6 @@ export default {
     }
   },
   server: {
-    host: "0.0.0.0"
+    // host: "0.0.0.0"
   }
 }
