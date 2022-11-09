@@ -33,6 +33,6 @@ export default {
 <style scoped lang="scss">
   select {
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
   }
 </style>
