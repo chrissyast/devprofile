@@ -1,5 +1,5 @@
 <template>
-  <div tabindex="0" class="main-content container" @wheel="handleScroll" @keyup="handleScroll">
+  <div tabindex="0" class="main-content container">
     <div>
       <h1 class="title">
         {{ welcomeText }}
@@ -7,6 +7,7 @@
       <p class="subtitle">
         {{ intro }}
       </p>
+      <NuxtLink to="/projects">See my projects</NuxtLink>
     </div>
   </div>
 </template>
@@ -16,37 +17,11 @@
 import axios from 'axios'
 import loadTranslations from '../retrieveTranslations.js'
 import { throttle, debounce } from 'lodash'
+import { fetchPrismicContent } from '../services/prismicContentFetcher'
 
 export default {
   async asyncData(context) {
-    let selectedLanguage = "en-gb"
-    if (process.server) {
-      const { req, res, beforeNuxtRender } = context
-      const host = req.headers.host;
-      if (host === "inglesconchris.me:3000" || host === "inglesconchris.me") {  // TODO clean this up
-        selectedLanguage = "es-es"
-      }
-    }
-    if (context.isDev) {
-      let translations = await loadTranslations()
-      const langMap = translations.map((f) => {return {"lang": f.lang, "data": f.data}})
-      return {langMap, selectedLanguage}
-    } else {
-    const {error, $prismic} = context
-        let introductionContent = {}
-        try {
-          let prismicResponse = await $prismic.api.query(
-          $prismic.predicates.at('document.type', 'introduction'),
-              {lang: '*'})
-          const content = prismicResponse.results
-          const langMap = content.map((f) => {return {"lang": f.lang, "data": f.data}})
-          return {langMap, selectedLanguage}
-          } catch (e) {
-            // Returns error page
-            console.log(e)
-            error({statusCode: 404, message: 'Page not found'})
-          }
-    }
+    return fetchPrismicContent("introduction", context, process)
   },
   beforeCreate() {
     //debugger;
@@ -76,60 +51,19 @@ export default {
   },
 
   methods: {
-    debouncedNextPage: debounce((message) => {console.log(message)}, 1250, {leading: true, trailing: false}),
-    handleScroll(event) {
-      console.log(event.type === "keyup")
-      if (event.deltaY > 0) {
-        this.debouncedNextPage("next page")
-      } else {
-        this.debouncedNextPage("prev page")
-      }
-    }
+    // debouncedNextPage: debounce((message) => {console.log(message)}, 1250, {leading: true, trailing: false}),
+    // handleScroll(event) {
+    //   console.log(event.type === "keyup")
+    //   if (event.deltaY > 0) {
+    //     this.debouncedNextPage("next page")
+    //   } else {
+    //     this.debouncedNextPage("prev page")
+    //   }
+    // }
   },
  // layout: "blank"
 }
 </script>
 
 <style lang="scss">
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title, .subtitle {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-    // color: #35495e;
-    color: #49c79e;
-}
-
-.title {
-  display: block;
-  font-weight: 300;
-  font-size: 9vw;
-  // letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 3vw;
-  // word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
