@@ -39,11 +39,11 @@ $slice-size-normal: 60vh;
 
 .egg-container {
     position: relative;
-    left: calc(50% - ($slice-size-normal / 2));
-    top: calc(50% - ($slice-size-normal / 2));
+    left: calc(50% - (#{$slice-size-normal} / 2));
+    top: calc(50% - (#{$slice-size-normal} / 2));
     @media (max-width: 580px) {
-      left: calc(50% - ($slice-size-mob / 2));
-      top: calc(50% - ($slice-size-mob / 2));
+      left: calc(50% - (#{$slice-size-mob} / 2));
+      top: calc(50% - (#{$slice-size-mob} / 2));
     }
 }
 

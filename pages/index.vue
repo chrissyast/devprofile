@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content container">
+  <div tabindex="0" class="main-content container" @wheel="handleScroll" @keyup="handleScroll">
     <div>
       <h1 class="title">
         {{ welcomeText }}
@@ -15,6 +15,7 @@
 // FOO
 import axios from 'axios'
 import loadTranslations from '../retrieveTranslations.js'
+import { throttle, debounce } from 'lodash'
 
 export default {
   async asyncData(context) {
@@ -75,8 +76,17 @@ export default {
   },
 
   methods: {
-
-  }
+    debouncedNextPage: debounce((message) => {console.log(message)}, 1250, {leading: true, trailing: false}),
+    handleScroll(event) {
+      console.log(event.type === "keyup")
+      if (event.deltaY > 0) {
+        this.debouncedNextPage("next page")
+      } else {
+        this.debouncedNextPage("prev page")
+      }
+    }
+  },
+ // layout: "blank"
 }
 </script>
 
@@ -108,14 +118,14 @@ export default {
 .title {
   display: block;
   font-weight: 300;
-  font-size: 10vw;
-  letter-spacing: 1px;
+  font-size: 9vw;
+  // letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
-  word-spacing: 5px;
+  font-size: 3vw;
+  // word-spacing: 5px;
   padding-bottom: 15px;
 }
 
