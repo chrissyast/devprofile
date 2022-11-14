@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "translations": "node translations.js",
+    "translations": "node downloadLocalTranslations.js",
     "start": "nuxt start",
     "dev_start": "node --inspect node_modules/.bin/nuxt",
     "generate": "nuxt generate"

@@ -12,7 +12,7 @@ export default {
   },
   computed: {
     projects() {
-        return this.langMap.filter(l => l.lang = this.storeLanguage).map(l2 => l2.data)
+        return this.langMap.filter(l => l.lang === this.storeLanguage).map(l2 => l2.data)
     },
     storeLanguage() {
       return this.$store.state.selectedLanguage

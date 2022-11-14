@@ -13,10 +13,6 @@
 </template>
 
 <script>
-// FOO
-import axios from 'axios'
-import loadTranslations from '../retrieveTranslations.js'
-import { throttle, debounce } from 'lodash'
 import { fetchPrismicContent } from '../services/prismicContentFetcher'
 
 export default {
