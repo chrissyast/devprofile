@@ -1,6 +1,8 @@
 <template>
-    <div tabindex="0" class="main-content container">
-        <p v-for="project in projects">{{project.title}}</p>
+    <div tabindex="0" class="main-content">
+      <v-container>
+        <ProjectCard v-for="(project, i) in projects" :key="i" :project="project">{{project.title}}</ProjectCard>
+      </v-container>
     </div>
 </template>
 

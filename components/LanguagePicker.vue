@@ -34,5 +34,7 @@ export default {
   select {
     position: fixed;
     z-index: 1000;
+    -webkit-appearance: auto;
+    background-color: white;  // adding vuetify has changed appearance of the select. consider a new implementation of the select altogether
   }
 </style>

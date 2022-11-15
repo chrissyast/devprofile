@@ -19,7 +19,6 @@
     "@nuxtjs/prismic": "^1.2.4",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/vuetify": "^1.12.3",
     "@tuya/tuya-connector-nodejs": "^2.1.2",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
@@ -28,5 +27,7 @@
     "sass": "^1.49.7",
     "sass-loader": "^10.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3"
+  }
 }

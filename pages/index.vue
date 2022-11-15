@@ -1,5 +1,5 @@
 <template>
-  <div tabindex="0" class="main-content container">
+  <div tabindex="0" class="main-content">
     <div>
       <h1 class="title">
         {{ welcomeText }}
