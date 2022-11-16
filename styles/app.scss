@@ -31,7 +31,7 @@ html {
   min-height: calc(100vh - 20px);
   display: flex;
   justify-content: center;
-  .centred {
+  &.centred {
     align-items: center;
   }
   .centred-text {
