@@ -1,7 +1,9 @@
 <template>
     <div tabindex="0" class="main-content">
       <v-container>
-        <ProjectCard v-for="(project, i) in projects" :key="i" :project="project">{{project.title}}</ProjectCard>
+        <v-row>
+          <ProjectCard v-for="(project, i) in projects" :key="i" :project="project">{{project.title}}</ProjectCard>
+        </v-row>
       </v-container>
     </div>
 </template>
