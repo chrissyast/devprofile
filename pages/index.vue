@@ -1,6 +1,6 @@
 <template>
-  <div tabindex="0" class="main-content">
-    <div>
+  <div tabindex="0" class="main-content centred">
+    <div class="centred-text">
       <h1 class="title">
         {{ welcomeText }}
       </h1>

@@ -31,8 +31,12 @@ html {
   min-height: calc(100vh - 20px);
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  .centred {
+    align-items: center;
+  }
+  .centred-text {
+    text-align: center;
+  }
 }
 
 .title, .subtitle {
