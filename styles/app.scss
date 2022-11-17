@@ -5,9 +5,6 @@ $slice-size-normal: 60vh;
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
   }
   
 html {
@@ -39,7 +36,7 @@ html {
   }
 }
 
-.title, .subtitle {
+.c-title, .c-subtitle {
   font-family:
     'Quicksand',
     'Source Sans Pro',
@@ -54,14 +51,14 @@ html {
     color: #49c79e;
 }
 
-.title {
+.c-title {
   display: block;
   font-weight: 300;
   font-size: 9vw;
   // letter-spacing: 1px;
 }
 
-.subtitle {
+.c-subtitle {
   font-weight: 300;
   font-size: 3vw;
   // word-spacing: 5px;

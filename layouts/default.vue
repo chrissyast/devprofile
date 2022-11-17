@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-app>
     <Header/>
     <TrippyEgg />
     <Nuxt />
-  </div>
+  </v-app>
 </template>
 
 <style lang="scss">

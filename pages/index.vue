@@ -1,10 +1,10 @@
 <template>
   <div tabindex="0" class="main-content centred">
     <div class="centred-text">
-      <h1 class="title">
+      <h1 class="c-title">
         {{ welcomeText }}
       </h1>
-      <p class="subtitle">
+      <p class="c-subtitle">
         {{ intro }}
       </p>
       <NuxtLink to="/projects">See my projects</NuxtLink>
