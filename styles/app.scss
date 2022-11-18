@@ -2,9 +2,19 @@ $slice-size-mob: 36vh;
 $slice-size-normal: 60vh;
 
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family:
+      'Quicksand',
+      'Source Sans Pro',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #49c79e; // TODO maybe this should be in the theme
   }
   
 html {
@@ -34,21 +44,6 @@ html {
   .centred-text {
     text-align: center;
   }
-}
-
-.c-title, .c-subtitle {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-    // color: #35495e;
-    color: #49c79e;
 }
 
 .c-title {
