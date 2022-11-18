@@ -1,11 +1,25 @@
 <template>
   <v-col cols="12" sm="6">
-    <v-card>
-      <v-card-title>{{$prismic.asText(project.title)}}</v-card-title>
+    <v-skeleton-loader v-if="!techsLoaded" type="image" />
+    <v-card v-else light>
+      <v-card-title>
+        <v-container class="d-flex">
+          <v-row align="center">
+            {{$prismic.asText(project.title)}}
+            <v-tooltip bottom v-for="l in techLogos" :key="l">
+              <template v-slot:activator="{ on, attrs }">
+                <img height="20" width="20" contain :key="l" :src="l.url" style="margin-left:2px; margin-right:2px" v-bind="attrs"
+          v-on="on" />
+              </template>
+              <span>{{l.tooltip}}</span>
+            </v-tooltip>
+            
+          </v-row>
+        </v-container>
+      </v-card-title>
       <v-card-subtitle>{{$prismic.asText(project.more_detail)}}</v-card-subtitle>
-      <v-img :src="project.demo_gif.url" height="250" contain></v-img>
+      <v-img :src="project.demo_gif.url" height="250" contain/>
       <a :href="project.live_demo.url"><v-btn>Check it out!</v-btn></a>
-      <v-img v-for="l in techLogos" height="20" contain :key="l" :src="l"></v-img>
       <!-- TODO alignment and hover text -->
     </v-card>
   </v-col>
@@ -21,7 +35,8 @@ export default {
   },
   data() {
     return {
-      technologies: []
+      technologies: [],
+      techsLoaded: false
     }
   },
   async created() {
@@ -38,10 +53,16 @@ export default {
         }
       }
       this.technologies = output
+      this.techsLoaded = true
   },
   computed: {
     techLogos() {
-      return this.technologies.map(t => t.data.thumbnail.url)
+      return this.technologies.map(t => {
+        return { 
+          url: t.data.thumbnail.url,
+          tooltip: this.$prismic.asText(t.data.name)
+        }
+      })
     }
   }
 }
