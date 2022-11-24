@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-app-bar app>
     <LanguagePicker/>
-  </div>
+  </v-app-bar>
 </template>
 
 <script>
@@ -13,5 +13,8 @@ export default {
 </script>
 
 <style scoped>
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+  background-color: #000000;
+}
 
 </style>
