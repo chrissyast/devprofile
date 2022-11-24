@@ -23,7 +23,7 @@ export async function fetchPrismicContent(section, context, process) {
               $prismic.predicates.at('document.type', section),
               {lang: '*'}
             )
-            const content = prismicResponse.results
+            const content = Object.assign([], prismicResponse.results) // some weird duplication was happening without the assign
             const fallbackLanguageContent = content.filter(r => r.lang === fallbackLanguage)
             const untranslatedContent = fallbackLanguageContent.filter(ep => ep.alternate_languages.length !== allAlternateLangs.length)
             untranslatedContent.forEach(cont => {
