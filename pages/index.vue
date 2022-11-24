@@ -7,7 +7,7 @@
       <p class="c-subtitle">
         {{ intro }}
       </p>
-      <NuxtLink to="/projects">See my projects</NuxtLink>
+      <LinkButton to="/projects" :label="translateByKey('seeMyProjects', storeLanguage)"></LinkButton>
     </div>
   </div>
 </template>
@@ -18,17 +18,6 @@ import { fetchPrismicContent } from '../services/prismicContentFetcher'
 export default {
   async asyncData(context) {
     return fetchPrismicContent("introduction", context, process)
-  },
-  beforeCreate() {
-    //debugger;
-  },
-  data() {
-    return {
-        languages: [{code:"en-gb",name:"English"},{code:"es-es",name:"Español"},{code:"zh-cn",name:"简体中文"}]
-    }
-  },
-  created(context) {
-
   },
   computed: {
     welcomeText() {

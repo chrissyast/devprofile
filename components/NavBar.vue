@@ -3,7 +3,7 @@
     <v-container class="d-flex">
       <v-row align="center">
         <v-col cols="6">
-          <link-button to="/" label="home" />
+          <link-button to="/" :label="translateByKey('home', storeLanguage)" />
         </v-col>
         <v-col cols="6">
           <v-row justify="end">
@@ -18,7 +18,11 @@
 
 <script>
 export default {
-  name: "Header",
+  computed: {
+    storeLanguage() {
+      return this.$store.state.selectedLanguage
+    }
+  }
 }
 </script>
 

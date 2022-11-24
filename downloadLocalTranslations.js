@@ -24,7 +24,7 @@ sections.forEach((s) =>
           response.results.push(copiedPost)
         })
       })
-      fs.writeFile(`translations/${s}.json`, JSON.stringify(response), {flag: 'w'}, function (err) {
+      fs.writeFile(`content/${s}.json`, JSON.stringify(response), {flag: 'w'}, function (err) {
         if (err) console.log(err)
       })
   })

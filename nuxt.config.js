@@ -20,7 +20,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     // '~/plugins/axios',
-    { src: "~/plugins/pwa-update.js", mode: "client" }
+    { src: "~/plugins/translate.js" }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
