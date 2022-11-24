@@ -29,9 +29,6 @@ export default {
       const selectedLanguageContent =  this.langMap.find(f => f.lang === this.storeLanguage)
       const text = this.$prismic.asText(selectedLanguageContent.data.introduction_text)
       return text
-    },
-    storeLanguage() {
-      return this.$store.state.selectedLanguage
     }
   },
 

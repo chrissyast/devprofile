@@ -6,5 +6,10 @@ Vue.mixin({
     translateByKey(key, language) {
       return tran[language][key]
     }
+  },
+  computed: {
+    storeLanguage() {
+      return this.$store.state.selectedLanguage
+    }
   }
 })

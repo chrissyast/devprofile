@@ -1,4 +1,5 @@
 export default {
   home: "início",
-  seeMyProjects: "mis proyectos"
+  seeMyProjects: "mis proyectos",
+  checkItOut: "¡miralo!"
 }

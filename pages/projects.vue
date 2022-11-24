@@ -2,7 +2,7 @@
     <div tabindex="0" class="main-content">
       <v-container>
         <v-row>
-          <ProjectCard v-for="(project, i) in projects" :key="i" :project="project">{{project.title}}</ProjectCard>
+          <ProjectCard v-for="(project, i) in projects" :key="`project-${i}`" :project="project">{{project.title}}{{i}}</ProjectCard>
         </v-row>
       </v-container>
     </div>
@@ -17,9 +17,6 @@ export default {
   computed: {
     projects() {
         return this.langMap.filter(l => l.lang === this.storeLanguage).map(l2 => l2.data)
-    },
-    storeLanguage() {
-      return this.$store.state.selectedLanguage
     }
   }
 }

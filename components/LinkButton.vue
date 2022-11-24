@@ -1,5 +1,8 @@
 <template>
-  <nuxt-link :to="to">
+  <a :href="to" v-if="external">
+    <v-btn>{{label}}</v-btn>
+  </a>
+  <nuxt-link v-else :to="to">
     <v-btn>
       {{label}}
     </v-btn>
@@ -16,6 +19,9 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    external: {
+      type: Boolean
     }
   }
 }
