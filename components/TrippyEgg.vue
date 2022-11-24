@@ -38,7 +38,7 @@ $slice-size-mob: 36vh;
 $slice-size-normal: 60vh;
 
 .egg-container {
-    opacity: 50%;
+    opacity: 0.5;
     position: relative;
     left: calc(50% - (#{$slice-size-normal} / 2));
     top: calc(50% - (#{$slice-size-normal} / 2));
