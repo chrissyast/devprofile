@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header/>
+    <NavBar/>
     <TrippyEgg />
     <v-main class="pa-0">
       <Nuxt />
@@ -14,8 +14,7 @@
 }
 </style>
 <script>
-import Header from "@/components/Header";
+
 export default {
-  components: {Header}
 }
 </script>
