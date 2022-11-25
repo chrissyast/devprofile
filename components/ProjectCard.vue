@@ -20,7 +20,7 @@
       <v-card-subtitle>{{$prismic.asText(project.subtitle)}}</v-card-subtitle>
       <v-card-text>{{$prismic.asText(project.more_detail)}}</v-card-text>
       <v-img v-if="project.demo_gif.url" :src="project.demo_gif.url" height="250" contain/>
-      <v-card-actions>
+      <v-card-actions class="px-4 py-0">
         <v-container class="d-flex">
           <v-row align="center">
             <v-col cols="6">

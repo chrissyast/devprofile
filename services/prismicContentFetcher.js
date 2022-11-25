@@ -35,7 +35,7 @@ export async function fetchPrismicContent(section, context, process) {
                 content.push(copiedPost)
               })
             })
-            const langMap = content.map((f) => {return {"lang": f.lang, "data": f.data}})
+            const langMap = content.map((f) => {return {"lang": f.lang, "data": f.data, "pub": f.first_publication_date}})
             return {langMap, selectedLanguage}
             } catch (e) {
               // Returns error page

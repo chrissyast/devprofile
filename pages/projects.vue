@@ -16,7 +16,18 @@ export default {
   },
   computed: {
     projects() {
-        return this.langMap.filter(l => l.lang === this.storeLanguage).map(l2 => l2.data)
+      return this.langMap.filter(l => l.lang === this.storeLanguage).sort(this.orderProjects).map(l2 => l2.data)
+    }
+  },
+  methods: {
+    orderProjects(a, b) {
+      if (a.data.priority == b.data.priority) {
+        return Date.parse(b.pub) - Date.parse(a.pub)
+      } else {
+        if (b.data.priority == null) { return -1 }
+        if (a.data.priority == null) { return 1 }
+        return a.data.priority - b.data.priority
+      }
     }
   }
 }
