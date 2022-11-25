@@ -1,11 +1,11 @@
 <template>
   <a :href="to" v-if="external">
-    <v-btn>{{label}}</v-btn>
+    <slot v-if="$slots['default']"></slot>
+    <v-btn v-else>{{label}}</v-btn>
   </a>
   <nuxt-link v-else :to="to">
-    <v-btn>
-      {{label}}
-    </v-btn>
+    <slot v-if="$slots['default']"></slot>
+    <v-btn v-else>{{label}}</v-btn>
   </nuxt-link>
 </template>
 
@@ -22,6 +22,9 @@ export default {
     },
     external: {
       type: Boolean
+    },
+    children: {
+      type: Object
     }
   }
 }

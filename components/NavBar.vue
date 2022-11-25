@@ -4,7 +4,9 @@
       <v-row align="center">
         <v-col cols="6">
           <v-row justify="start">
-            <link-button to="/" :label="translateByKey('home', storeLanguage)" />
+            <link-button to="/" :label="translateByKey('home', storeLanguage)">
+              <v-icon v-if="isMobileC">mdi-home-circle</v-icon>
+            </link-button>
           </v-row>
         </v-col>
         <v-col cols="6">
@@ -19,10 +21,9 @@
 </template>
 
 <script>
+import isMobile from '../mixins/isMobile.vue';
 export default {
-  computed: {
-
-  }
+  mixins: [isMobile]
 }
 </script>
 
