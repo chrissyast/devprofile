@@ -1,10 +1,8 @@
 <template>
     <div tabindex="0" class="main-content">
-      <v-container>
-        <v-row>
-          <ProjectCard v-for="(project, i) in projects" :key="`project-${i}`" :project="project">{{project.title}}{{i}}</ProjectCard>
-        </v-row>
-      </v-container>
+      <compacted-card-container outer-class="pa-2" inner-class="pa-2">
+        <ProjectCard v-for="(project, i) in projects" :key="`project-${i}`" :project="project">{{project.title}}{{i}}</ProjectCard>
+      </compacted-card-container>
     </div>
 </template>
 
