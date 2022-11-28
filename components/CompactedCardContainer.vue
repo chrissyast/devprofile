@@ -8,6 +8,7 @@
         class="child-card"
         :class="innerClass"
         :style="`position: absolute; width: ${100 / perRow}%;`"
+        @click="debouncedRearrageCards(75)"
       >
         <VNodes :vnodes="c" />
       </div>
@@ -59,10 +60,10 @@ export default {
     window.removeEventListener('resize', this.debouncedRearrageCards)
   },
   created() {
-    this.debouncedRearrageCards = debounce(this.rearrangeCards, 200, {
+    this.debouncedRearrageCards = time => debounce(this.rearrangeCards, time || 250, {
       leading: false,
       trailing: true
-    })
+    })(time)
   },
   mounted() {
     setTimeout(this.rearrangeCards, 500)
