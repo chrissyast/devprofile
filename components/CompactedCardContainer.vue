@@ -53,6 +53,13 @@ export default {
       return this.perRowSizes[this.$vuetify.breakpoint.name]
     }
   },
+  watch: {
+    perRow: {
+      handler() {
+        this.debouncedRearrageCards()
+      }
+    }
+  },
   beforeMount() {
     window.addEventListener('resize', this.debouncedRearrageCards)
   },
