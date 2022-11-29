@@ -18,7 +18,20 @@
     </v-card-title>
     <v-card-subtitle>{{$prismic.asText(project.subtitle)}}</v-card-subtitle>
     <v-card-text>{{$prismic.asText(project.more_detail)}}</v-card-text>
-    <v-img v-if="project.demo_gif.url" :src="project.demo_gif.url" height="250" contain/>
+    <v-img v-if="project.demo_gif.url" :src="project.demo_gif.url" height="250" contain>
+      <template v-slot:placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-3"
+          ></v-progress-circular>
+        </v-row>
+      </template>
+    </v-img>
     <v-card-actions class="px-4 py-0">
       <v-container class="d-flex">
         <v-row align="center">
