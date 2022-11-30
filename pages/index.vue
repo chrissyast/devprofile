@@ -1,24 +1,26 @@
 <template>
   <div tabindex="0" class="main-content centred">
-    <div class="centred-text">
+    <div class="centred-text px-3">
       <h1 class="c-title">
         {{ welcomeText }}
       </h1>
       <p class="c-subtitle">
         {{ intro }}
       </p>
-      <LinkButton to="/projects" :label="translateByKey('seeMyProjects', storeLanguage)"></LinkButton>
+      <LinkButton to="/projects" :x-large="!isMobileC" :small="isMobileC" :label="translateByKey('seeMyProjects', storeLanguage)"></LinkButton>
     </div>
   </div>
 </template>
 
 <script>
 import { fetchPrismicContent } from '../services/prismicContentFetcher'
+import isMobile from '../mixins/isMobile.vue';
 
 export default {
   async asyncData(context) {
     return fetchPrismicContent("introduction", context, process)
   },
+  mixins: [isMobile],
   computed: {
     welcomeText() {
       const selectedLanguageContent =  this.langMap.find(f => f.lang === this.storeLanguage)

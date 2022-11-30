@@ -5,7 +5,7 @@
   </a>
   <nuxt-link v-else :to="to">
     <slot v-if="$slots['default']"></slot>
-    <v-btn v-else>{{label}}</v-btn>
+    <v-btn v-bind="sizeProps" v-else>{{label}}</v-btn>
   </nuxt-link>
 </template>
 
@@ -25,6 +25,25 @@ export default {
     },
     children: {
       type: Object
+    },
+    large: {
+      type: Boolean
+    },
+    xLarge: {
+      type: Boolean
+    },
+    small: {
+      type: Boolean
+    } 
+  },
+  computed: {
+    sizeProps() {
+      const { large, xLarge, small } = this
+      return {
+        large,
+        xLarge,
+        small
+      }
     }
   }
 }

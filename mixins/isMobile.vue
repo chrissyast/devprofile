@@ -3,6 +3,7 @@ export default {
   mounted() {
     if (!window) { return }
     window.addEventListener("resize", this.myEventHandler);
+    this.myEventHandler()
   },
   data() {
     return {
