@@ -2,7 +2,7 @@
   <v-app>
     <NavBar/>
     <TrippyEgg />
-    <v-main class="pa-0">
+    <v-main>
       <Nuxt />
     </v-main>
   </v-app>

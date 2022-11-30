@@ -29,10 +29,8 @@ html {
 }
 
 .main-content {
-  position: absolute;
   width: 100%;
-  margin-top: 64px;
-  min-height: calc(100vh - 64px);
+  min-height: 100%;
   display: flex;
   justify-content: center;
   &.centred {
@@ -46,13 +44,13 @@ html {
 .c-title {
   display: block;
   font-weight: 300;
-  font-size: 9vw;
+  font-size: calc(max(9vw, 50px));
   // letter-spacing: 1px;
 }
 
 .c-subtitle {
   font-weight: 300;
-  font-size: 3vw;
+  font-size: calc(max(3vw, 20px));
   // word-spacing: 5px;
   padding-bottom: 15px;
 }
