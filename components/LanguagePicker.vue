@@ -32,7 +32,9 @@ export default {
 
 <style scoped lang="scss">
   select {
-    position: fixed;
-    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-appearance: auto;
+    background-color: white;  // adding vuetify has changed appearance of the select. consider a new implementation of the select altogether
   }
 </style>

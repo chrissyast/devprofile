@@ -2,12 +2,19 @@ $slice-size-mob: 36vh;
 $slice-size-normal: 60vh;
 
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family:
+      'Quicksand',
+      'Source Sans Pro',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    color: #49c79e; // TODO maybe this should be in the theme
   }
   
 html {
@@ -16,15 +23,34 @@ html {
 }
 
 .background {
-    opacity: 0.25;
     width: 100%;
     height: 100%;
     position: fixed;
 }
 
 .main-content {
-  position: absolute;
   width: 100%;
-  z-index: 100;
-  margin-top: 20px !important;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  &.centred {
+    align-items: center;
+  }
+  .centred-text {
+    text-align: center;
+  }
+}
+
+.c-title {
+  display: block;
+  font-weight: 300;
+  font-size: calc(max(9vw, 50px));
+  // letter-spacing: 1px;
+}
+
+.c-subtitle {
+  font-weight: 300;
+  font-size: calc(max(3vw, 20px));
+  // word-spacing: 5px;
+  padding-bottom: 15px;
 }
